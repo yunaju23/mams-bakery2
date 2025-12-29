@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Sistem Informasi Penjualan Roti - Mam's Bakery</title>
+<style>
+body {
+    margin: 0;
+    background: #f3bfb0;
+    font-family: Arial, sans-serif;
+}
+.page { display: none; }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffeaa7;
+    padding: 10px 20px;
+}
+nav {
+    background: #b58cff;
+    padding: 10px;
+}
+nav a {
+    color: white;
+    margin-right: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+section{padding:20px;display:none}
+section.active{display:block}
+input,select{width:100%;padding:8px;margin:5px 0}
+footer{text-align:center;padding:10px;background:#ffe066;margin-top:20px}
+.judul-produk {
+    background: #a569bd;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+.card {
+    background: #e8ffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.product-img {
+    width: 100%;
+    border-radius: 10px;
+}
+.harga {
+    font-weight: bold;
+    color: #d63031;
+}
+</style>
+</head>
+<body>
+<header>
+<h2>Mam's Bakery</h2>
+<nav>
+<a href="#" onclick="show('home')">Beranda</a>
+<a href="#" onclick="show('produk')">Semua Produk</a>
+<a href="#" onclick="show('keranjang')">Keranjang</a>
+<a href="#" onclick="show('login')">Login</a>
+<a href="#" onclick="show('admin')">Admin</a>
+<a href="#" onclick="show('tentang')">Tentang Kami</a>
+<a href="#" onclick="show('hubungi')">Hubungi Kami</a>
+
+</nav>
+</header>
+
+<section id="home" class="active">
+<h3>Selamat Datang di Mam's Bakery</h3>
+<p>Sistem Informasi Penjualan Roti Berbasis Web</p>
+<div class="grid">
+<div class="card"><img src="1.jpg" width="100%"><br><b>Cheesecake Strawberry</b></br></div>
+<div class="card"><img src="2.jpg" width="100%"><br><b>mini fruit tart</b><br></div>
+<div class="card"><img src="3.jpg" width="100%"><br><b>Tiramisu Cake</b><br></div>
+<div class="card"><img src="4.jpg" width="100%"><br><b>Roti Coklat</b><br></div>
+<div class="card"><img src="5.jpg" width="100%"><br><b>chocolate Mousse Cake</b><br></div>
+<div class="card"><img src="6.jpg" width="100%"><br><b>Pudding Caramel</b><br></div>
+</div>
+</section>
+
+<section id="produk">
+<h3>Daftar Produk</h3>
+<div class="grid">
+<div class="card"><img src="1.jpg" width="100%"><br><b>Cheesecake Strawberry Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-coklat">
+<button onclick="addCart('Roti Coklat',5000, document.getElementById('qty-coklat').value)">Pesan</button></div>
+<div class="card"><img src="2.jpg" width="100%"><br><b>mini fruit tart Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-keju">
+<button onclick="addCart('Roti Keju',6000, document.getElementById('qty-keju').value)">Pesan</button></div>
+<div class="card"><img src="3.jpg" width="100%"><br><b>Tiramisu Cake Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-pisang">
+<button onclick="addCart('Roti Pisang',5500, document.getElementById('qty-pisang').value)">Pesan</button></div>
+<div class="card"><img src="4.jpg" width="100%"><br><b>Roti Coklat Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-coklat">
+<button onclick="addCart('Roti Coklat',5000, document.getElementById('qty-coklat').value)">Pesan</button></div>
+<div class="card"><img src="5.jpg" width="100%"><br><b>chocolate Mousse Cake Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-coklat">
+<button onclick="addCart('Roti Coklat',5000, document.getElementById('qty-coklat').value)">Pesan</button></div>
+<div class="card"><img src="6.jpg" width="100%"><br><b>Pudding Caramel Rp5.000</b><br>
+<input type="number" min="1" value="0" id="qty-coklat">
+<button onclick="addCart('Roti Coklat',5000, document.getElementById('qty-coklat').value)">Pesan</button></div>
+</div>
+</section>
+
+<!-- ================= Hubungi ================= -->
+<section id="hubungi">
+    <h2>Hubungi Kami</h2>
+    <p>Jika ada Kendala Hubungi Kami di No.Telpon: 0812344678.</p>
+</section>
+
+<!-- ================= TENTANG ================= -->
+<section id="tentang">
+    <h2>Tentang Kami</h2>
+    <p>Mam's Bakery menyediakan kue rumahan dengan rasa premium.</p>
+</section>
+
+<section id="login">
+<h3>Login Member</h3>
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+<button>Login</button>
+<p>Belum punya akun? <b>Daftar</b></p>
+</section>
+
+<section id="keranjang">
+<h3>Keranjang Belanja</h3>
+<table border="1" cellpadding="5" width="100%">
+<tr><th>Produk</th><th>Qty</th><th>Harga</th><th>Total</th></tr>
+<tbody id="cart"></tbody>
+</table>
+<h4 id="grand"></h4>
+<button onclick="show('pembayaran')">Checkout</button>
+</section>
+
+<section id="pembayaran">
+<h3>Konfirmasi Pemesanan</h3>
+<input type="text" placeholder="Nama Lengkap" id="nama">
+<input type="text" placeholder="Alamat Pengiriman" id="alamat">
+<select><option>Transfer Bank</option><option>COD</option></select>
+<input type="file">
+<button onclick="kirimPesanan()">Kirim Pesanan</button>
+</section>
+
+
+<section id="admin">
+<h3>Login Admin</h3>
+<input type="text" placeholder="Username Admin">
+<input type="password" placeholder="Password">
+<button onclick="show('dashboard')">Login</button>
+</section>
+
+<section id="dashboard">
+<h3>Dashboard Admin</h3>
+<ul>
+<li>Data Produk</li>
+<li>Data Member</li>
+<li>Data Order</li>
+<li>Laporan Penjualan</li>
+</ul>
+</section>
+
+<footer>
+<p>© 2025 Mam's Bakery</p>
+</footer>
+
+<script>
+let cart=[];
+function show(id){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function addCart(nama,harga,qty){cart.push({nama,harga,qty});renderCart();alert(nama+' berhasil dipesan');}
+function renderCart(){let tbody=document.getElementById('cart');let total=0;tbody.innerHTML='';cart.forEach(i=>{let sub=i.harga*i.qty;total+=sub;tbody.innerHTML+=`<tr><td>${i.nama}</td><td>${i.qty}</td><td>Rp${i.harga}</td><td>Rp${sub}</td></tr>`});document.getElementById('grand').innerText='Total Bayar: Rp'+total;}
+function kirimPesanan(){if(cart.length==0){alert('Keranjang kosong');return;}alert('Pesanan berhasil dikirim! Terima kasih sudah memesan di Mam\'s Bakery');cart=[];renderCart();show('home');}
+</script>
+</body>
+</html>
